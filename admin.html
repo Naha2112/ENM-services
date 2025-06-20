@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENM'S SERVICES - Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-light: #ffffff;
+            --bg-section: #f8f9fa;
+            --text-dark: #2c3e50;
+            --text-light: #6c757d;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --border-light: #e9ecef;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-section);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .admin-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .admin-header h1 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .admin-header .lock-icon {
+            color: var(--accent-color);
+        }
+
+        .admin-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .admin-card {
+            background: var(--bg-light);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-light);
+        }
+
+        .admin-card h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .upload-zone {
+            border: 2px dashed var(--accent-color);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .upload-zone:hover {
+            background: rgba(52, 152, 219, 0.05);
+            border-color: var(--primary-color);
+        }
+
+        .upload-zone.dragover {
+            background: rgba(52, 152, 219, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0.25rem;
+        }
+
+        .btn-primary {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+
+        .btn-secondary {
+            background: var(--text-light);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .image-item {
+            position: relative;
+            background: var(--bg-section);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .image-info {
+            padding: 0.75rem;
+        }
+
+        .image-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            word-break: break-all;
+        }
+
+        .image-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .image-actions .btn {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: var(--bg-section);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+            display: none;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .status-message {
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            display: none;
+        }
+
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .carousel-manager {
+            margin-top: 2rem;
+        }
+
+        .carousel-preview {
+            background: var(--bg-light);
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 1px solid var(--border-light);
+        }
+
+        .carousel-images {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+        }
+
+        .carousel-thumb {
+            min-width: 120px;
+            height: 80px;
+            border-radius: 5px;
+            object-fit: cover;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-thumb.active {
+            border-color: var(--accent-color);
+        }
+
+        .carousel-thumb:hover {
+            transform: scale(1.05);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-light);
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .image-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-header">
+        <div class="container">
+            <h1><i class="fas fa-lock lock-icon"></i> ENM'S SERVICES - Admin Dashboard</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="admin-grid">
+            <!-- Image Upload Section -->
+            <div class="admin-card">
+                <h2><i class="fas fa-cloud-upload-alt"></i> Upload Images</h2>
+                
+                <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <p><strong>Click to select images</strong></p>
+                    <p>Supports: JPG, PNG, WebP</p>
+                    <small style="color: var(--text-light); margin-top: 1rem; display: block;">
+                        💡 Start by uploading your best work! Images will be automatically categorized and added to your portfolio.
+                    </small>
+                </div>
+                
+                <input type="file" id="fileInput" multiple accept="image/*" style="display: none;">
+                
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                
+                <div class="status-message" id="statusMessage"></div>
+                
+                <div class="form-group">
+                    <label for="imageCategory">Category (will add to portfolio filters):</label>
+                    <select id="imageCategory" class="form-control">
+                        <option value="bathroom">🛁 Bathroom Renovation</option>
+                        <option value="kitchen" selected>🍳 Kitchen Renovation</option>
+                        <option value="painting">🎨 Professional Painting</option>
+                        <option value="tiling">🔲 Tiling & Flooring</option>
+                        <option value="flooring">🏠 Flooring Installation</option>
+                        <option value="handyman">🔧 Handyman Services</option>
+                        <option value="carpentry">🪚 Carpentry Work</option>
+                    </select>
+                    <small style="color: var(--text-light); margin-top: 0.5rem; display: block;">
+                        Images will be automatically added to the website's portfolio section and filter buttons
+                    </small>
+                </div>
+                
+                <button class="btn btn-primary" onclick="processImages()">
+                    <i class="fas fa-upload"></i> Upload & Add to Portfolio
+                </button>
+                
+                <div id="recentUploads" style="margin-top: 1rem; display: none;">
+                    <h4>Recent Uploads:</h4>
+                    <div id="uploadsList" style="background: var(--bg-section); padding: 1rem; border-radius: 5px; font-size: 0.9rem;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Manager -->
+            <div class="admin-card">
+                <h2><i class="fas fa-images"></i> Portfolio Manager</h2>
+                
+                <div class="carousel-manager">
+                    <h3 id="carouselTitle">Current Carousel Images</h3>
+                    <div class="carousel-preview">
+                        <div class="carousel-images" id="carouselImages">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                        <button class="btn btn-secondary" onclick="refreshCarousel()">
+                            <i class="fas fa-sync"></i> Refresh Preview
+                        </button>
+                        <button class="btn btn-primary" onclick="updateCarousel()">
+                            <i class="fas fa-save"></i> Update Carousel
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="portfolioTitle">Portfolio Title:</label>
+                    <input type="text" id="portfolioTitle" class="form-control" value="Complete Home Renovation Projects">
+                </div>
+                
+                <div class="form-group">
+                    <label for="portfolioDescription">Portfolio Description:</label>
+                    <textarea id="portfolioDescription" class="form-control" rows="3">Stunning transformations featuring luxury marble bathroom renovations, modern kitchen refits with premium finishes, and professional installation throughout</textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Gallery -->
+        <div class="admin-card">
+            <h2><i class="fas fa-folder-open"></i> Current Images</h2>
+            <button class="btn btn-secondary" onclick="loadImageGallery()">
+                <i class="fas fa-sync"></i> Refresh Gallery
+            </button>
+            <div class="image-gallery" id="imageGallery">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="admin-card">
+            <h2><i class="fas fa-tools"></i> Quick Actions</h2>
+            <button class="btn btn-primary" onclick="window.open('/', '_blank')">
+                <i class="fas fa-external-link-alt"></i> View Website
+            </button>
+            <button class="btn btn-secondary" onclick="generateBackup()">
+                <i class="fas fa-download"></i> Backup Images
+            </button>
+            <button class="btn btn-danger" onclick="clearCache()">
+                <i class="fas fa-trash"></i> Clear Browser Cache
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Current carousel images (will be loaded from server)
+        let carouselImages = [];
+
+        // All available images organized by category
+        let allImages = {};
+        let filteredCarouselImages = [];
+
+        // Initialize admin dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            loadImageGallery();
+            loadCarouselConfig();
+            setupDragAndDrop();
+            setupCategoryListener();
+        });
+
+        // Load carousel configuration from server
+        async function loadCarouselConfig() {
+            try {
+                const response = await fetch('/api/carousel');
+                const result = await response.json();
+                
+                if (result.success && result.config) {
+                    const config = result.config;
+                    
+                    // Update carousel images
+                    carouselImages = config.images || [];
+                    
+                    // Update form fields
+                    document.getElementById('portfolioTitle').value = config.title || 'Complete Home Renovation Projects';
+                    document.getElementById('portfolioDescription').value = config.description || '';
+                    
+                    // Update carousel preview
+                    updateCarouselPreview();
+                } else {
+                    console.warn('Could not load carousel config, using defaults');
+                }
+            } catch (error) {
+                console.error('Error loading carousel config:', error);
+            }
+        }
+
+        // Setup drag and drop functionality
+        function setupDragAndDrop() {
+            const uploadZone = document.querySelector('.upload-zone');
+            
+            uploadZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadZone.classList.add('dragover');
+            });
+            
+            uploadZone.addEventListener('dragleave', () => {
+                uploadZone.classList.remove('dragover');
+            });
+            
+            uploadZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadZone.classList.remove('dragover');
+                const files = e.dataTransfer.files;
+                document.getElementById('fileInput').files = files;
+            });
+        }
+
+        // Process selected images
+        async function processImages() {
+            const fileInput = document.getElementById('fileInput');
+            const category = document.getElementById('imageCategory').value;
+            
+            if (!fileInput.files.length) {
+                showStatus('Please select images to process', 'error');
+                return;
+            }
+            
+            try {
+                // Create FormData for file upload
+                const formData = new FormData();
+                Array.from(fileInput.files).forEach(file => {
+                    formData.append('files', file);
+                });
+                formData.append('category', category);
+                
+                showStatus(`Uploading ${fileInput.files.length} images to ${category} category...`, 'success');
+                
+                // Upload files to server
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showStatus(`✅ Successfully uploaded ${result.uploaded_files.length} images to ${category}!`, 'success');
+                    
+                    // Show recent uploads
+                    showRecentUploads(category, result.uploaded_files);
+                    
+                    // Update the website's portfolio section
+                    await updateWebsitePortfolio(category, result.uploaded_files);
+                    
+                    // Refresh the gallery and update carousel for current category
+                    loadImageGallery();
+                    
+                    // Clear the file input
+                    fileInput.value = '';
+                    
+                    // Small delay to allow image gallery to update, then refresh carousel
+                    setTimeout(() => {
+                        const currentCategory = document.getElementById('imageCategory').value;
+                        updateCarouselByCategory(currentCategory);
+                    }, 500);
+                } else {
+                    showStatus(`❌ Upload failed: ${result.error}`, 'error');
+                }
+                
+            } catch (error) {
+                showStatus(`❌ Upload error: ${error.message}`, 'error');
+            }
+        }
+        
+        // Update the main website's portfolio section
+        async function updateWebsitePortfolio(category, newImages) {
+            try {
+                const updateData = {
+                    category: category,
+                    images: newImages,
+                    action: 'add_to_category'
+                };
+                
+                const response = await fetch('/update_portfolio', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(updateData)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showStatus(`✅ Website portfolio updated for ${category} category`, 'success');
+                } else {
+                    showStatus(`⚠️ Images uploaded but portfolio update failed: ${result.error}`, 'error');
+                }
+                
+            } catch (error) {
+                showStatus(`⚠️ Images uploaded but portfolio update failed: ${error.message}`, 'error');
+            }
+        }
+
+        // Show status message
+        function showStatus(message, type) {
+            const statusMessage = document.getElementById('statusMessage');
+            statusMessage.innerHTML = message;
+            statusMessage.className = `status-message status-${type}`;
+            statusMessage.style.display = 'block';
+            
+            setTimeout(() => {
+                statusMessage.style.display = 'none';
+            }, 5000);
+        }
+
+        // Setup category change listener
+        function setupCategoryListener() {
+            const categorySelect = document.getElementById('imageCategory');
+            categorySelect.addEventListener('change', function() {
+                const selectedCategory = this.value;
+                updateCarouselByCategory(selectedCategory);
+                showStatus(`Switched to ${this.options[this.selectedIndex].text} category`, 'success');
+            });
+        }
+
+        // Update carousel to show images from selected category
+        function updateCarouselByCategory(category) {
+            console.log('🔍 Updating carousel for category:', category);
+            console.log('📁 Available categories in allImages:', Object.keys(allImages));
+            console.log('🖼️ Images in', category, ':', allImages[category] || []);
+            
+            // Map dropdown values to internal category keys if needed
+            let mappedCategory = category;
+            if (category === 'tiling') {
+                mappedCategory = 'flooring'; // Tiling maps to flooring in our detection logic
+            }
+            
+            // Filter images by category
+            const categoryImages = allImages[mappedCategory] || [];
+            console.log('✅ Using category:', mappedCategory, 'with', categoryImages.length, 'images');
+            
+            // Update carousel preview with category-specific images
+            filteredCarouselImages = categoryImages.slice(0, 10); // Limit to 10 images for performance
+            
+            // Update the carousel title
+            const categoryNames = {
+                'bathroom': 'Bathroom Renovation',
+                'kitchen': 'Kitchen Renovation',
+                'painting': 'Professional Painting',
+                'tiling': 'Tiling & Flooring',
+                'flooring': 'Flooring Installation',
+                'handyman': 'Handyman Services',
+                'carpentry': 'Carpentry Work'
+            };
+            
+            const titleElement = document.getElementById('carouselTitle');
+            if (titleElement) {
+                titleElement.textContent = `${categoryNames[category] || category} - Carousel Preview`;
+            }
+            
+            // Update the carousel preview
+            updateFilteredCarouselPreview();
+        }
+
+        // Load image gallery
+        async function loadImageGallery() {
+            const gallery = document.getElementById('imageGallery');
+            
+            try {
+                // Fetch images from server API
+                const response = await fetch('/api/images');
+                const result = await response.json();
+                
+                if (result.success && result.images) {
+                    const images = result.images;
+                    
+                    // Organize images by category
+                    allImages = {};
+                    images.forEach(imageInfo => {
+                        const filename = imageInfo.filename;
+                        // Determine category from filename prefix
+                        let category = 'general';
+                        if (filename.includes('bathroom')) category = 'bathroom';
+                        else if (filename.includes('kitchen')) category = 'kitchen';
+                        else if (filename.includes('painting')) category = 'painting';
+                        else if (filename.includes('tiling') || filename.includes('flooring')) category = 'flooring';
+                        else if (filename.includes('handyman')) category = 'handyman';
+                        else if (filename.includes('carpentry')) category = 'carpentry';
+                        
+                        console.log(`📸 File: ${filename} → Category: ${category}`);
+                        
+                        if (!allImages[category]) allImages[category] = [];
+                        allImages[category].push(filename);
+                    });
+                    
+                    console.log('📊 Final category organization:', allImages);
+                    
+                    // Update carousel for current category
+                    const currentCategory = document.getElementById('imageCategory').value;
+                    updateCarouselByCategory(currentCategory);
+                    
+                    if (images.length === 0) {
+                        gallery.innerHTML = '<p style="text-align: center; color: var(--text-light); padding: 2rem;">No images found. Upload some images to get started!</p>';
+                        return;
+                    }
+                    
+                    gallery.innerHTML = images.map(imageInfo => `
+                        <div class="image-item">
+                            <img src="images/${imageInfo.filename}" alt="${imageInfo.filename}" onerror="this.style.opacity='0.5'">
+                            <div class="image-info">
+                                <div class="image-name">${imageInfo.filename}</div>
+                                <div style="font-size: 0.8rem; color: var(--text-light); margin: 0.25rem 0;">
+                                    ${(imageInfo.size / 1024).toFixed(1)} KB
+                                </div>
+                                <div class="image-actions">
+                                    <button class="btn btn-primary" onclick="addToCarousel('${imageInfo.filename}')">
+                                        <i class="fas fa-plus"></i> Add to Carousel
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    gallery.innerHTML = '<p style="text-align: center; color: var(--text-light); padding: 2rem;">Error loading images. Please refresh the page.</p>';
+                }
+            } catch (error) {
+                console.error('Error loading image gallery:', error);
+                gallery.innerHTML = '<p style="text-align: center; color: var(--text-light); padding: 2rem;">Error loading images. Please check the server connection.</p>';
+            }
+        }
+
+        // Add image to carousel
+        function addToCarousel(imageName) {
+            if (!carouselImages.includes(imageName)) {
+                carouselImages.push(imageName);
+                updateCarouselPreview();
+                showStatus(`Added ${imageName} to carousel`, 'success');
+            } else {
+                showStatus(`${imageName} is already in the carousel`, 'error');
+            }
+        }
+
+        // Remove image from carousel
+        function removeFromCarousel(imageName) {
+            carouselImages = carouselImages.filter(img => img !== imageName);
+            updateCarouselPreview();
+            showStatus(`Removed ${imageName} from carousel`, 'success');
+        }
+
+        // Update carousel preview with filtered images (by category)
+        function updateFilteredCarouselPreview() {
+            const container = document.getElementById('carouselImages');
+            const currentCategory = document.getElementById('imageCategory').value;
+            const categoryNames = {
+                'bathroom': 'Bathroom Renovation',
+                'kitchen': 'Kitchen Renovation',
+                'painting': 'Professional Painting',
+                'tiling': 'Tiling & Flooring',
+                'flooring': 'Flooring Installation',
+                'handyman': 'Handyman Services',
+                'carpentry': 'Carpentry Work'
+            };
+            
+            if (filteredCarouselImages.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; color: var(--text-light); padding: 2rem; background: var(--bg-section); border-radius: 5px; width: 100%;">
+                        <i class="fas fa-images" style="font-size: 2rem; margin-bottom: 1rem; opacity: 0.5;"></i><br>
+                        No ${categoryNames[currentCategory] || currentCategory} images found.<br>
+                        <small>Upload some images in this category to see them here.</small>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = `
+                <div style="margin-bottom: 1rem; padding: 0.5rem; background: var(--bg-section); border-radius: 5px; text-align: center;">
+                    <strong>Showcasing: ${categoryNames[currentCategory] || currentCategory}</strong>
+                    <small style="display: block; color: var(--text-light);">${filteredCarouselImages.length} images available</small>
+                </div>
+                ${filteredCarouselImages.map((image, index) => `
+                    <div style="position: relative; display: inline-block;">
+                        <img src="images/${image}" alt="${image}" class="carousel-thumb ${index === 0 ? 'active' : ''}" 
+                             onclick="setActiveFilteredCarouselImage(${index})"
+                             onerror="this.style.opacity='0.5'">
+                        <button onclick="removeFromFilteredCarousel('${image}')" 
+                                style="position: absolute; top: -5px; right: -5px; background: #e74c3c; color: white; border: none; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; cursor: pointer;">×</button>
+                    </div>
+                `).join('')}
+            `;
+        }
+
+        // Update carousel preview (original function for backwards compatibility)
+        function updateCarouselPreview() {
+            const container = document.getElementById('carouselImages');
+            container.innerHTML = carouselImages.map((image, index) => `
+                <div style="position: relative; display: inline-block;">
+                    <img src="images/${image}" alt="${image}" class="carousel-thumb ${index === 0 ? 'active' : ''}" 
+                         onclick="setActiveCarouselImage(${index})"
+                         onerror="this.style.opacity='0.5'">
+                    <button onclick="removeFromCarousel('${image}')" 
+                            style="position: absolute; top: -5px; right: -5px; background: #e74c3c; color: white; border: none; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; cursor: pointer;">×</button>
+                </div>
+            `).join('');
+        }
+
+        // Set active carousel image (filtered)
+        function setActiveFilteredCarouselImage(index) {
+            document.querySelectorAll('.carousel-thumb').forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === index);
+            });
+        }
+
+        // Remove from filtered carousel
+        function removeFromFilteredCarousel(imageName) {
+            filteredCarouselImages = filteredCarouselImages.filter(img => img !== imageName);
+            updateFilteredCarouselPreview();
+            showStatus(`Removed ${imageName} from carousel`, 'success');
+        }
+
+        // Set active carousel image (original)
+        function setActiveCarouselImage(index) {
+            document.querySelectorAll('.carousel-thumb').forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === index);
+            });
+        }
+
+        // Refresh carousel preview
+        function refreshCarousel() {
+            const currentCategory = document.getElementById('imageCategory').value;
+            updateCarouselByCategory(currentCategory);
+            showStatus('Carousel preview refreshed', 'success');
+        }
+
+        // Update carousel (save changes to server)
+        async function updateCarousel() {
+            const title = document.getElementById('portfolioTitle').value;
+            const description = document.getElementById('portfolioDescription').value;
+            const currentCategory = document.getElementById('imageCategory').value;
+            
+            // Use filtered images if available, otherwise use original carousel images
+            const imagesToSave = filteredCarouselImages.length > 0 ? filteredCarouselImages : carouselImages;
+            
+            try {
+                const carouselData = {
+                    images: imagesToSave,
+                    title: title,
+                    description: description
+                };
+                
+                const response = await fetch('/update_carousel', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(carouselData)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    const categoryNames = {
+                        'bathroom': 'Bathroom Renovation',
+                        'kitchen': 'Kitchen Renovation',
+                        'painting': 'Professional Painting',
+                        'tiling': 'Tiling & Flooring',
+                        'flooring': 'Flooring Installation',
+                        'handyman': 'Handyman Services',
+                        'carpentry': 'Carpentry Work'
+                    };
+                    showStatus(`✅ Carousel updated successfully!<br>Category: ${categoryNames[currentCategory] || currentCategory}<br>Title: ${title}<br>Images: ${imagesToSave.length}`, 'success');
+                } else {
+                    showStatus(`❌ Failed to update carousel: ${result.error}`, 'error');
+                }
+                
+            } catch (error) {
+                console.error('Error updating carousel:', error);
+                showStatus(`❌ Error updating carousel: ${error.message}`, 'error');
+            }
+        }
+
+        // Generate backup (download carousel config)
+        async function generateBackup() {
+            try {
+                const response = await fetch('/api/carousel');
+                const result = await response.json();
+                
+                if (result.success) {
+                    const backupData = {
+                        timestamp: new Date().toISOString(),
+                        carousel_config: result.config,
+                        image_count: carouselImages.length
+                    };
+                    
+                    // Create download link
+                    const dataStr = JSON.stringify(backupData, null, 2);
+                    const dataBlob = new Blob([dataStr], {type: 'application/json'});
+                    const url = URL.createObjectURL(dataBlob);
+                    
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = `admin_backup_${new Date().toISOString().split('T')[0]}.json`;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(url);
+                    
+                    showStatus('✅ Backup downloaded successfully!', 'success');
+                } else {
+                    showStatus('❌ Failed to generate backup', 'error');
+                }
+            } catch (error) {
+                console.error('Error generating backup:', error);
+                showStatus(`❌ Backup error: ${error.message}`, 'error');
+            }
+        }
+
+        // Show recent uploads
+        function showRecentUploads(category, files) {
+            const recentUploads = document.getElementById('recentUploads');
+            const uploadsList = document.getElementById('uploadsList');
+            
+            const categoryEmoji = {
+                'bathroom': '🛁',
+                'kitchen': '🍳', 
+                'painting': '🎨',
+                'tiling': '🔲',
+                'flooring': '🏠',
+                'handyman': '🔧',
+                'carpentry': '🪚'
+            };
+            
+            const categoryName = {
+                'bathroom': 'Bathroom Renovation',
+                'kitchen': 'Kitchen Renovation',
+                'painting': 'Professional Painting', 
+                'tiling': 'Tiling & Flooring',
+                'flooring': 'Flooring Installation',
+                'handyman': 'Handyman Services',
+                'carpentry': 'Carpentry Work'
+            };
+            
+            uploadsList.innerHTML = `
+                <strong>${categoryEmoji[category] || '📁'} ${categoryName[category] || category}</strong><br>
+                ${files.map(file => `✅ ${file}`).join('<br>')}
+                <br><br>
+                <small style="color: var(--text-light);">
+                    These images have been added to your website's portfolio section and are now visible to visitors.
+                </small>
+            `;
+            
+            recentUploads.style.display = 'block';
+        }
+
+        // Clear browser cache
+        function clearCache() {
+            if (confirm('This will clear your browser cache and reload the page. Continue?')) {
+                // Clear cache and reload
+                if ('caches' in window) {
+                    caches.keys().then(names => {
+                        names.forEach(name => {
+                            caches.delete(name);
+                        });
+                    });
+                }
+                location.reload(true);
+            }
+        }
+    </script>
+</body>
+</html>
