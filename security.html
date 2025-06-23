@@ -2,53 +2,150 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Security & Safety | ENM'S SERVICES</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Services | ENM'S SERVICES</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+
     <header class="header">
         <nav class="navbar">
             <div class="nav-container">
                 <div class="nav-logo">
-                    <a href="index.html"><img src="images/logo.png" alt="ENM'S SERVICES Logo" class="site-logo" style="height: 60px; max-width: 180px;"></a>
+                    <a href="index.html"><img src="images/logo.PNG" alt="ENM'S SERVICES Logo" class="site-logo" style="height: 60px; max-width: 180px;"></a>
                 </div>
                 <ul class="nav-menu">
                     <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="property-maintenance.html" class="nav-link">Property Maintenance</a></li>
-                    <li class="nav-item"><a href="security.html" class="nav-link">Security & Safety</a></li>
-                    <li class="nav-item"><a href="cleaning.html" class="nav-link">Cleaning & Upkeep</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="index.html#services" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="property-maintenance.html" class="dropdown-item">Property Maintenance</a>
+                            <a href="security.html" class="dropdown-item">Security Services</a>
+                            <a href="cleaning.html" class="dropdown-item">Cleaning & Upkeep</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
                 </ul>
             </div>
         </nav>
     </header>
-    <main>
+
+    <!-- Intro Section -->
+    <section class="content-section">
         <div class="container">
-            <section class="content-section">
-                <div class="content-grid">
-                    <div class="content-text">
-                        <h2>Advanced Security Solutions</h2>
-                        <p>Healthcare and corporate facilities have unique security needs. We understand it is of the utmost importance that your premises remain safe and secure for staff, clients, and visitors. Our experienced security professionals are dedicated to providing solutions customised to each client's needs and comply with all necessary regulations and protocols.</p>
-                    </div>
-                    <div class="content-image">
-                        <img src="images/security-hero.jpg" alt="Professional Security Guard">
-                    </div>
-                </div>
-            </section>
-            
-            <section class="content-section">
-                <div class="content-grid image-left">
-                    <div class="content-image">
-                        <img src="images/hero-bg.jpg" alt="Team of security professionals">
-                    </div>
-                    <div class="content-text">
-                        <h2>Expertise in Manned Guarding and Support</h2>
-                        <p>We understand the level of trust our customers place in us and we take pride in delivering superior security, allowing them to focus on what is truly important. We work closely with our partners to design and optimise service solutions for all environments, from construction sites to corporate offices.</p>
-                    </div>
-                </div>
-            </section>
-            
-            <a href="index.html" class="btn btn-secondary" style="margin:2rem auto 0 auto;display:block;max-width:200px;">Back to Home</a>
+            <h2>ENM'S Services - Security and Safety Solutions</h2>
+            <p>Protecting your property, people, and peace of mind is our top priority. Our comprehensive security solutions are delivered by fully trained, SIA-licensed professionals who understand the unique challenges facing businesses and properties across the UK. From retail premises to construction sites, events to residential complexes, we provide tailored security services that adapt to your specific needs and budget.</p>
         </div>
-    </main>
+    </section>
+
+    <!-- Alternating Service Sections -->
+    <section class="content-section">
+        <div class="container service-content-grid">
+            <div class="service-text">
+                <h2>SIA-Licensed Security Guards</h2>
+                <p>Our highly trained security officers hold current SIA licenses and bring years of experience in threat assessment, conflict resolution, and emergency response. Whether you need visible deterrence, access control, or comprehensive site protection, our guards maintain professional standards while providing a welcoming presence for your legitimate visitors and customers.</p>
+            </div>
+            <div class="service-image">
+                <img src="images/security-hero.jpg" alt="SIA-Licensed Security Guards">
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" style="background-color: var(--bg-section);">
+        <div class="container service-content-grid image-left">
+            <div class="service-image">
+                <img src="images/PHOTO-2025-05-15-00-33-05.jpg" alt="CCTV Operators">
+            </div>
+            <div class="service-text">
+                <h2>CCTV Operators</h2>
+                <p>Our certified CCTV operators provide round-the-clock monitoring services, ensuring your property remains under constant surveillance even when you're not there. Using state-of-the-art monitoring equipment and advanced camera systems, our operators can quickly identify potential threats, coordinate emergency responses, and maintain detailed incident logs for your records.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container service-content-grid">
+            <div class="service-text">
+                <h2>Door Supervisors</h2>
+                <p>Creating safe, controlled environments for your venue is essential for both customer satisfaction and legal compliance. Our SIA-licensed door supervisors are trained in crowd management, ID verification, conflict de-escalation, and emergency procedures. They ensure your premises maintain appropriate standards while providing a professional first point of contact for your guests.</p>
+            </div>
+            <div class="service-image">
+                <img src="images/PHOTO-2025-05-15-00-33-33.jpg" alt="Door Supervisors">
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" style="background-color: var(--bg-section);">
+        <div class="container service-content-grid image-left">
+            <div class="service-image">
+                <img src="images/bathroom-PHOTO-2025-05-15-00-33-38.jpg" alt="Event Security Staff">
+            </div>
+            <div class="service-text">
+                <h2>Event Security Staff</h2>
+                <p>From intimate corporate gatherings to large-scale public events, our experienced security teams understand the complexities of event management. We work closely with event organizers to develop comprehensive security plans that address crowd control, VIP protection, emergency evacuation procedures, and coordination with local authorities when required.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container service-content-grid">
+            <div class="service-text">
+                <h2>Mobile Patrols</h2>
+                <p>Our mobile patrol services provide flexible, cost-effective security coverage across multiple locations. Our marked patrol vehicles conduct regular site visits, perimeter checks, and alarm responses, offering visible deterrence while maintaining detailed patrol reports. This service is ideal for businesses requiring security presence without the cost of permanent guards.</p>
+            </div>
+            <div class="service-image">
+                <img src="images/kitchen-PHOTO-2025-05-15-00-33-02.jpg" alt="Mobile Patrols">
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" style="background-color: var(--bg-section);">
+        <div class="container service-content-grid image-left">
+            <div class="service-image">
+                <img src="images/kitchen-PHOTO-2025-05-15-00-33-03.jpg" alt="Construction Site Security">
+            </div>
+            <div class="service-text">
+                <h2>Construction Site Security</h2>
+                <p>Construction sites face unique security challenges including theft of materials and equipment, unauthorized access, and vandalism. Our construction security specialists understand these risks and provide targeted solutions including perimeter security, equipment protection, and coordination with site managers to ensure work continues safely and securely.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container service-content-grid">
+            <div class="service-text">
+                <h2>Concierge/Front of House Security</h2>
+                <p>First impressions matter, and our concierge security staff combine professional hospitality skills with comprehensive security training. They manage visitor registration, access control, and building security while maintaining the welcoming atmosphere essential for modern commercial and residential properties.</p>
+            </div>
+            <div class="service-image">
+                <img src="images/PHOTO-2025-05-15-00-33-39.jpg" alt="Concierge/Front of House Security">
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" style="background-color: var(--bg-section);">
+        <div class="container service-content-grid image-left">
+            <div class="service-image">
+                <img src="images/hero-bg.jpg" alt="Manned Guarding and Key Holding">
+            </div>
+            <div class="service-text">
+                <h2>Manned Guarding and Key Holding</h2>
+                <p>Our manned guarding services provide continuous on-site security presence, while our secure key holding service ensures authorized personnel can respond quickly to alarms and emergencies. This combination offers comprehensive protection with the flexibility to scale services based on your changing security requirements.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 ENM'S SERVICES. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top-btn" title="Back to Top"><i class="fas fa-arrow-up"></i></a>
+
+    <script src="script.js"></script>
 </body>
 </html> 

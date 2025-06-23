@@ -2,60 +2,152 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Property Maintenance | ENM'S SERVICES</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+
     <header class="header">
         <nav class="navbar">
             <div class="nav-container">
                 <div class="nav-logo">
-                    <a href="index.html"><img src="images/logo.png" alt="ENM'S SERVICES Logo" class="site-logo" style="height: 60px; max-width: 180px;"></a>
+                    <a href="index.html"><img src="images/logo.PNG" alt="ENM'S SERVICES Logo" class="site-logo" style="height: 60px; max-width: 180px;"></a>
                 </div>
                 <ul class="nav-menu">
                     <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="property-maintenance.html" class="nav-link">Property Maintenance</a></li>
-                    <li class="nav-item"><a href="security.html" class="nav-link">Security & Safety</a></li>
-                    <li class="nav-item"><a href="cleaning.html" class="nav-link">Cleaning & Upkeep</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="index.html#services" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="property-maintenance.html" class="dropdown-item">Property Maintenance</a>
+                            <a href="security.html" class="dropdown-item">Security Services</a>
+                            <a href="cleaning.html" class="dropdown-item">Cleaning & Upkeep</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
                 </ul>
             </div>
         </nav>
     </header>
-    <main>
-        <div class="container">
-            <!-- This section can be removed as we are redesigning the page -->
-            <!-- 
-            <section class="service-hero-grid">
-                ...
-            </section>
-            -->
 
-            <section class="content-section">
-                <div class="content-grid">
-                    <div class="content-text">
-                        <h2>Supporting Your Property Needs</h2>
-                        <p>Over the past decade, we have focused on delivering the highest quality services and value to our clients. We are proud to support properties of all types and sizes across the UK. We know that our teams can have a direct impact on the quality of your environment, and that is why we ensure that our people are trained to achieve the highest standards.</p>
-                    </div>
-                    <div class="content-image">
-                        <img src="images/PHOTO-2025-05-15-00-33-05.jpg" alt="Professional Maintenance Team">
-                    </div>
+    <main>
+        <!-- Intro Section -->
+        <section class="content-section">
+            <div class="container">
+                <h2>ENM'S Services - Property Maintenance Solutions</h2>
+                <p>Maintaining your property to the highest standards shouldn't be a constant worry. At ENM'S Services, we provide comprehensive property maintenance solutions that keep your residential or commercial premises in excellent condition year-round. Our skilled tradespeople and project managers handle everything from routine maintenance to major renovations, ensuring your property retains its value and functionality.</p>
+            </div>
+        </section>
+
+        <!-- Alternating Service Sections -->
+        <section class="content-section">
+            <div class="container service-content-grid">
+                <div class="service-text">
+                    <h2>Painting Services</h2>
+                    <p>Transform your property with our professional painting services. Whether you need interior refreshing, exterior weatherproofing, or complete color scheme changes, our experienced painters use premium materials and proven techniques to deliver flawless finishes. We handle surface preparation, protective coverings, and clean-up, ensuring minimal disruption to your daily operations.</p>
                 </div>
-            </section>
-            
-            <section class="content-section">
-                <div class="content-grid image-left">
-                    <div class="content-image">
-                        <img src="images/kitchen-PHOTO-2025-05-15-00-33-02.jpg" alt="Modern Kitchen Renovation">
-                    </div>
-                    <div class="content-text">
-                        <h2>Expertise in Renovations and Repairs</h2>
-                        <p>We work closely with our clients to design and optimise service solutions for all environments. Our teams work in partnership with you to ensure we are providing the best value and the most effective services, from general repairs to full-scale renovations.</p>
-                    </div>
+                <div class="service-image">
+                    <img src="images/PHOTO-2025-05-15-00-33-05.jpg" alt="Painting Services">
                 </div>
-            </section>
-            
-            <a href="index.html" class="btn btn-secondary" style="margin:2rem auto 0 auto;display:block;max-width:200px;">Back to Home</a>
-        </div>
+            </div>
+        </section>
+
+        <section class="content-section" style="background-color: var(--bg-section);">
+            <div class="container service-content-grid image-left">
+                <div class="service-image">
+                    <img src="images/bathroom-PHOTO-2025-05-15-00-33-38.jpg" alt="Tiling Solutions">
+                </div>
+                <div class="service-text">
+                    <h2>Tiling Solutions</h2>
+                    <p>From bathroom renovations to commercial flooring projects, our tiling specialists work with ceramic, porcelain, natural stone, and modern composite materials. We provide expert installation, repairs, and maintenance for wall and floor tiling, ensuring waterproof seals and perfectly aligned finishes that stand the test of time.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container service-content-grid">
+                <div class="service-text">
+                    <h2>Flooring Installation and Repair</h2>
+                    <p>Our flooring experts handle all types of surfaces including hardwood, laminate, vinyl, carpet, and commercial-grade materials. Whether you're updating a single room or reflooring an entire building, we provide professional installation, repairs, and maintenance services that enhance both appearance and functionality.</p>
+                </div>
+                <div class="service-image">
+                    <img src="images/kitchen-PHOTO-2025-05-15-00-33-02.jpg" alt="Flooring Installation and Repair">
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" style="background-color: var(--bg-section);">
+            <div class="container service-content-grid image-left">
+                <div class="service-image">
+                    <img src="images/PHOTO-2025-05-15-00-33-33.jpg" alt="Electrical Services">
+                </div>
+                <div class="service-text">
+                    <h2>Electrical Services</h2>
+                    <p>All electrical work is carried out by fully qualified, Part P certified electricians who ensure complete compliance with current regulations. From simple socket installations and lighting upgrades to complete rewiring projects and electrical safety inspections, we prioritize safety while delivering reliable, efficient electrical solutions.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container service-content-grid">
+                <div class="service-text">
+                    <h2>Plumbing Services</h2>
+                    <p>Our certified plumbers handle everything from blocked drains and leaking taps to complete bathroom installations and central heating systems. We provide 24/7 emergency plumbing services alongside planned maintenance, using quality materials and modern techniques to ensure long-lasting, reliable results.</p>
+                </div>
+                <div class="service-image">
+                    <img src="images/kitchen-PHOTO-2025-05-15-00-33-03.jpg" alt="Plumbing Services">
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" style="background-color: var(--bg-section);">
+            <div class="container service-content-grid image-left">
+                <div class="service-image">
+                    <img src="images/PHOTO-2025-05-15-00-33-39.jpg" alt="Renovations and Refurbishment">
+                </div>
+                <div class="service-text">
+                    <h2>Renovations and Refurbishment</h2>
+                    <p>Whether you're updating a tired property or adapting spaces for new purposes, our renovation team manages projects from initial planning through to final completion. We coordinate all trades, handle necessary permits, and ensure projects are delivered on time and within budget while maintaining the highest quality standards.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container service-content-grid">
+                <div class="service-text">
+                    <h2>Kitchen Refits</h2>
+                    <p>Transform your kitchen with our complete refit service. From initial design consultation through to final installation, we handle everything including cabinetry, worktops, appliances, plumbing, electrical work, and tiling. Our kitchen specialists create functional, attractive spaces that add value to your property.</p>
+                </div>
+                <div class="service-image">
+                    <img src="images/security-hero.jpg" alt="Kitchen Refits">
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" style="background-color: var(--bg-section);">
+            <div class="container service-content-grid image-left">
+                <div class="service-image">
+                    <img src="images/hero-bg.jpg" alt="Emergency Repairs and Call-Outs">
+                </div>
+                <div class="service-text">
+                    <h2>Emergency Repairs and Call-Outs</h2>
+                    <p>Property emergencies don't wait for convenient times. Our emergency response team is available 24/7 to handle urgent repairs including burst pipes, electrical faults, security breaches, and weather damage. We respond quickly to minimize damage and restore your property to safe, functional condition.</p>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 ENM'S SERVICES. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top-btn" title="Back to Top"><i class="fas fa-arrow-up"></i></a>
+
+    <script src="script.js"></script>
 </body>
 </html> 

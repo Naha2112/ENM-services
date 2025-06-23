@@ -11,41 +11,35 @@ window.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     // Mobile menu functionality
-    const mobileMenu = document.getElementById('mobile-menu');
-    const navMenu = document.querySelector('.nav-menu');
+const mobileMenu = document.getElementById('mobile-menu');
+const navMenu = document.querySelector('.nav-menu');
 
-    mobileMenu.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
-
-    // Simple portfolio loading
-    loadSimplePortfolio();
-    
-    // Refresh portfolio every 30 seconds
-    setInterval(loadSimplePortfolio, 30000);
+mobileMenu.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
 
     // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
                 target.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
-                });
-            }
-        });
+            });
+        }
     });
+});
 
     // Scroll to top button
     const scrollToTopButton = document.querySelector('.scroll-to-top');
     if (scrollToTopButton) {
-        window.addEventListener('scroll', () => {
+window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
                 scrollToTopButton.classList.add('visible');
-            } else {
+    } else {
                 scrollToTopButton.classList.remove('visible');
             }
         });
@@ -59,36 +53,80 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Fade in animation for elements
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('appear');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('appear');
                 observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
+        }
+    });
+}, observerOptions);
 
     document.querySelectorAll('.service-card, .feature-item, .contact-method-card').forEach(el => {
         el.classList.add('fade-in');
         observer.observe(el);
     });
 
-    const modal = document.getElementById('portfolioModal');
-    const modalClose = document.getElementById('portfolioModalClose');
-    if (modal && modalClose) {
-        modalClose.addEventListener('click', hidePortfolioModal);
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) hidePortfolioModal();
-        });
-        document.addEventListener('keydown', function(e) {
-            if (modal.style.display === 'flex' && (e.key === 'Escape' || e.key === ' ')) {
-                hidePortfolioModal();
+    // Accordion for service cards on homepage
+    document.querySelectorAll('.service-card .service-card-header').forEach(header => {
+        header.addEventListener('click', function(e) {
+            e.stopPropagation();
+
+            const card = this.closest('.service-card');
+            const content = card.querySelector('.service-card-content');
+            const wasActive = card.classList.contains('active');
+
+            // Close all other cards
+            document.querySelectorAll('.service-card').forEach(c => {
+                if (c !== card) {
+                    c.classList.remove('active');
+                    c.querySelector('.service-card-content').style.maxHeight = null;
+                }
+            });
+
+            // Toggle current card
+            if (wasActive) {
+                card.classList.remove('active');
+                content.style.maxHeight = null;
+            } else {
+                card.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + "px";
             }
+        });
+    });
+
+    const header = document.querySelector('.header');
+    const backToTopBtn = document.querySelector('.back-to-top-btn');
+
+    window.addEventListener('scroll', () => {
+        // Sticky header
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+
+        // Back to top button
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
+    });
+
+    // Smooth scroll for back to top
+    if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     }
 
@@ -99,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const services = category.querySelector('.category-services');
             const arrow = header.querySelector('.dropdown-arrow');
             const isActive = header.classList.contains('active');
-
+            
             // Close all others
             document.querySelectorAll('.category-header').forEach(h => {
                 h.classList.remove('active');
@@ -117,103 +155,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-});
-
-// Simple function to load and display portfolio images
-async function loadSimplePortfolio() {
-    try {
-        const response = await fetch('/api/images');
-        if (!response.ok) {
-            console.log('No images endpoint available');
-            return;
-        }
-        
-        let images = await response.json();
-        // Handle both {images: [...]} and [...] formats
-        if (Array.isArray(images.images)) {
-            images = images.images.map(img =>
-                typeof img === 'string' ? `images/${img}` : `images/${img.filename}`
-            );
-        } else if (Array.isArray(images)) {
-            images = images.map(img =>
-                typeof img === 'string' ? img : `images/${img.filename}`
-            );
-        } else {
-            images = [];
-        }
-        // Filter out logo files
-        images = images.filter(imgPath => !/logo\.(png|jpg|jpeg|gif|webp)$/i.test(imgPath));
-        
-        const portfolioGrid = document.getElementById('portfolioGrid');
-        if (!portfolioGrid) return;
-        
-        // Clear existing content
-        portfolioGrid.innerHTML = '';
-        
-        if (images.length === 0) {
-            // Show empty state
-            portfolioGrid.innerHTML = `
-                <div class="portfolio-empty-state">
-                    <i class="fas fa-images"></i>
-                    <h3>Upload your work photos in the admin panel</h3>
-                    <p>Photos will appear here once uploaded</p>
-                </div>
-            `;
-            return;
-        }
-        
-        // Add each image to the grid
-        images.forEach(imagePath => {
-            const imageDiv = document.createElement('div');
-            imageDiv.className = 'portfolio-image';
-            
-            imageDiv.innerHTML = `
-                <img src="${imagePath}" alt="Portfolio work" loading="lazy" 
-                     onerror="this.parentElement.innerHTML='<div style=&quot;padding:2rem;text-align:center;color:#999;&quot;><i class=&quot;fas fa-image&quot;></i><br>Image not found</div>'">
-            `;
-            
-            // Add click-to-expand (lightbox)
-            imageDiv.addEventListener('click', function() {
-                showPortfolioModal(imagePath);
-            });
-            
-            portfolioGrid.appendChild(imageDiv);
-        });
-        
-    } catch (error) {
-        console.error('Error loading portfolio:', error);
-        const portfolioGrid = document.getElementById('portfolioGrid');
-        if (portfolioGrid) {
-            portfolioGrid.innerHTML = `
-                <div class="portfolio-empty-state">
-                    <i class="fas fa-images"></i>
-                    <h3>Upload your work photos in the admin panel</h3>
-                    <p>Photos will appear here once uploaded</p>
-                </div>
-            `;
-        }
-    }
-}
-
-// Lightbox/modal logic for portfolio images
-function showPortfolioModal(imgSrc) {
-    const modal = document.getElementById('portfolioModal');
-    const modalImg = document.getElementById('portfolioModalImg');
-    if (!modal || !modalImg) return;
-    modalImg.src = imgSrc;
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
-
-function hidePortfolioModal() {
-    const modal = document.getElementById('portfolioModal');
-    if (!modal) return;
-    modal.style.display = 'none';
-    document.body.style.overflow = '';
-}
-
-// Always hide the lightbox on page load
-window.addEventListener('DOMContentLoaded', () => {
-    const lightbox = document.getElementById('lightbox');
-    if (lightbox) lightbox.style.display = 'none';
 });
