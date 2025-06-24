@@ -2238,4 +2238,13 @@ body {
     .service-image {
         order: 2;
     }
+    .service-card-mobile {
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 2px 12px rgba(44,62,80,0.08);
+        padding: 1.2rem 0.8rem 1.5rem 0.8rem;
+        margin-bottom: 1.2rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
 }
