@@ -2216,3 +2216,41 @@ body {
         height: 120px;
     }
 }
+
+@media (max-width: 600px) {
+    .service-content-grid,
+    .service-content-grid.image-left {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 0 0.5rem;
+    }
+    .service-image {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    .service-image img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: var(--shadow);
+    }
+    .service-text {
+        width: 100%;
+        text-align: left;
+    }
+    .service-text h2 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+    }
+    .service-text p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    .content-section {
+        padding: 1.5rem 0 1.5rem 0;
+    }
+}
