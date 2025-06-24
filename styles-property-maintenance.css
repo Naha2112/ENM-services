@@ -2229,6 +2229,13 @@ body {
     }
     .service-content-grid,
     .service-content-grid.image-left {
+        flex-direction: column;
         gap: 1rem;
+    }
+    .service-text {
+        order: 1;
+    }
+    .service-image {
+        order: 2;
     }
 }
