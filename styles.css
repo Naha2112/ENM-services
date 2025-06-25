@@ -2156,3 +2156,11 @@ body {
         max-width: 320px;
     }
 }
+
+.header .site-logo {
+    height: 80px !important;
+    max-width: 240px !important;
+    display: block;
+    margin-left: 0;
+    filter: drop-shadow(0 2px 8px rgba(44,62,80,0.10));
+}
