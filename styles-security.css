@@ -2137,6 +2137,12 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+/* Position Fire Marshall Services for better symmetry */
+.security-service-card:last-child {
+    grid-column: 3;
+    grid-row: 4;
+}
 .security-service-image-center img {
     width: 340px;
     height: 340px;
