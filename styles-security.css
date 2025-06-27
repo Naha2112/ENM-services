@@ -2271,8 +2271,8 @@ body {
 }
 
 .header .site-logo {
-    height: 90px !important;
-    max-width: 260px !important;
+    height: 140px !important;
+    max-width: 400px !important;
     display: block;
     margin: 0 auto;
     vertical-align: middle;
