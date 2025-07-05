@@ -55,49 +55,78 @@
 </head>
 <body>
     <header class="header">
-        <nav class="nav">
+        <nav class="navbar">
             <div class="nav-container">
                 <div class="nav-logo">
                     <a href="../index.html"><img src="../images/logo.PNG" alt="ENM'S SERVICES - Professional Home Improvement and Security Solutions" class="site-logo" style="height: 140px; max-width: 400px; vertical-align: middle; display: block; margin: 0 auto;"></a>
                 </div>
                 <ul class="nav-menu">
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="../index.html#services">Services</a></li>
-                    <li><a href="../index.html#about">About</a></li>
-                    <li><a href="../blog.html">Blog</a></li>
-                    <li><a href="../index.html#contact">Contact</a></li>
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="../index.html#services" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="../property-maintenance.html" class="dropdown-item">Property Maintenance</a>
+                            <a href="../security.html" class="dropdown-item">Security Services</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../blog.html" class="nav-link">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../contact.html" class="nav-link">Contact</a>
+                    </li>
                 </ul>
-                <div class="nav-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <div class="nav-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
                 </div>
             </div>
         </nav>
     </header>
 
     <main style="margin-top: 120px;">
-        <article class="blog-post">
+        <!-- Breadcrumb Navigation -->
+        <section style="background: #f8f9fa; padding: 20px 0;">
             <div class="container">
-                <header class="blog-post-header">
-                    <div class="blog-post-meta">
-                        <span class="category">Property Maintenance</span>
-                        <span class="date">June 20, 2025</span>
-                    </div>
-                    <h1>Essential Boiler Maintenance: Keep Your Home Warm and Safe</h1>
-                    <p class="blog-post-excerpt">Learn the essential steps for maintaining your boiler system, including annual servicing, safety checks, and warning signs to watch for to ensure efficient heating and prevent costly breakdowns.</p>
-                </header>
+                <nav aria-label="breadcrumb">
+                    <ol style="display: flex; list-style: none; padding: 0; margin: 0;">
+                        <li><a href="../index.html" style="color: #667eea; text-decoration: none;">Home</a></li>
+                        <li style="margin: 0 10px; color: #666;">/</li>
+                        <li><a href="../blog.html" style="color: #667eea; text-decoration: none;">Blog</a></li>
+                        <li style="margin: 0 10px; color: #666;">/</li>
+                        <li style="color: #333;">Essential Boiler Maintenance</li>
+                    </ol>
+                </nav>
+            </div>
+        </section>
 
-                <div class="blog-post-image">
-                    <img src="../images/boiler.png" alt="Professional boiler maintenance and servicing" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px;">
+        <!-- Article Header -->
+        <section class="article-header" style="padding: 60px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <div class="container" style="text-align: center;">
+                <h1 style="color: white; font-size: 2.5rem; margin-bottom: 20px;">Essential Boiler Maintenance: Keep Your Home Warm and Safe</h1>
+                <div class="article-meta" style="color: rgba(255,255,255,0.9); margin-bottom: 20px;">
+                    <span><i class="fas fa-calendar"></i> June 20, 2025</span>
+                    <span style="margin: 0 20px;"><i class="fas fa-tag"></i> Property Maintenance</span>
+                    <span><i class="fas fa-clock"></i> 6 min read</span>
                 </div>
+                <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Learn the essential steps for maintaining your boiler system, including annual servicing, safety checks, and warning signs to watch for to ensure efficient heating and prevent costly breakdowns.</p>
+            </div>
+        </section>
 
-                <div class="blog-post-content">
-                    <p>Your boiler is the heart of your home's heating system, working tirelessly to keep you warm and provide hot water throughout the year. Regular maintenance is crucial not only for efficiency and longevity but also for safety. A well-maintained boiler can save you money on energy bills and prevent costly emergency repairs.</p>
+        <!-- Article Content -->
+        <article class="blog-article" style="padding: 80px 0;">
+            <div class="container" style="max-width: 800px; margin: 0 auto;">
+                <div class="article-content" style="line-height: 1.8; color: #333;">
 
-                    <h2>Why Boiler Maintenance Matters</h2>
+
+                    <p style="font-size: 1.1rem; margin-bottom: 30px;">Your boiler is the heart of your home's heating system, working tirelessly to keep you warm and provide hot water throughout the year. Regular maintenance is crucial not only for efficiency and longevity but also for safety. A well-maintained boiler can save you money on energy bills and prevent costly emergency repairs.</p>
+
+                    <h2 style="color: #667eea; margin: 40px 0 20px 0;">Why Boiler Maintenance Matters</h2>
                     <p>Regular boiler maintenance offers numerous benefits:</p>
-                    <ul>
+                    <ul style="margin: 20px 0; padding-left: 30px;">
                         <li><strong>Safety:</strong> Prevents dangerous gas leaks and carbon monoxide poisoning</li>
                         <li><strong>Efficiency:</strong> Maintains optimal performance and reduces energy costs</li>
                         <li><strong>Reliability:</strong> Prevents unexpected breakdowns during cold weather</li>
@@ -105,11 +134,11 @@
                         <li><strong>Warranty:</strong> Keeps manufacturer warranties valid</li>
                     </ul>
 
-                    <h2>Annual Boiler Service: What's Included</h2>
+                    <h2 style="color: #667eea; margin: 40px 0 20px 0;">Annual Boiler Service: What's Included</h2>
                     <p>A professional annual service should include:</p>
-                    
-                    <h3>Safety Checks</h3>
-                    <ul>
+
+                    <h3 style="color: #667eea; margin: 30px 0 15px 0;">Safety Checks</h3>
+                    <ul style="margin: 20px 0; padding-left: 30px;">
                         <li>Gas pressure and flow rate testing</li>
                         <li>Flue and ventilation inspection</li>
                         <li>Carbon monoxide testing</li>
@@ -117,8 +146,8 @@
                         <li>Safety device functionality</li>
                     </ul>
 
-                    <h3>Performance Testing</h3>
-                    <ul>
+                    <h3 style="color: #667eea; margin: 30px 0 15px 0;">Performance Testing</h3>
+                    <ul style="margin: 20px 0; padding-left: 30px;">
                         <li>Combustion analysis</li>
                         <li>Heat exchanger inspection</li>
                         <li>Pump and fan operation</li>
@@ -126,7 +155,7 @@
                         <li>System pressure checks</li>
                     </ul>
 
-                    <h2>Warning Signs Your Boiler Needs Attention</h2>
+                    <h2 style="color: #667eea; margin: 40px 0 20px 0;">Warning Signs Your Boiler Needs Attention</h2>
                     <p>Watch out for these warning signs that indicate your boiler may need professional attention:</p>
                     
                     <div class="warning-box" style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 20px; border-radius: 8px; margin: 20px 0;">
@@ -140,28 +169,28 @@
                         </ul>
                     </div>
 
-                    <h2>Simple Maintenance Tasks You Can Do</h2>
+                    <h2 style="color: #667eea; margin: 40px 0 20px 0;">Simple Maintenance Tasks You Can Do</h2>
                     <p>While professional servicing is essential, there are some simple checks you can perform:</p>
-                    
-                    <h3>Monthly Checks</h3>
-                    <ul>
+
+                    <h3 style="color: #667eea; margin: 30px 0 15px 0;">Monthly Checks</h3>
+                    <ul style="margin: 20px 0; padding-left: 30px;">
                         <li>Check boiler pressure (should be between 1-2 bar)</li>
                         <li>Test heating and hot water systems</li>
                         <li>Listen for unusual noises</li>
                         <li>Check for visible leaks or corrosion</li>
                     </ul>
 
-                    <h3>Seasonal Preparation</h3>
-                    <ul>
+                    <h3 style="color: #667eea; margin: 30px 0 15px 0;">Seasonal Preparation</h3>
+                    <ul style="margin: 20px 0; padding-left: 30px;">
                         <li>Bleed radiators to remove air pockets</li>
                         <li>Check thermostat settings</li>
                         <li>Ensure vents and flues are clear of debris</li>
                         <li>Test carbon monoxide detectors</li>
                     </ul>
 
-                    <h2>When to Call a Professional</h2>
+                    <h2 style="color: #667eea; margin: 40px 0 20px 0;">When to Call a Professional</h2>
                     <p>Always contact a Gas Safe registered engineer for:</p>
-                    <ul>
+                    <ul style="margin: 20px 0; padding-left: 30px;">
                         <li>Annual boiler servicing</li>
                         <li>Any gas-related repairs</li>
                         <li>Installation of new components</li>
@@ -175,49 +204,29 @@
                         <a href="../index.html#contact" class="btn btn-light" style="background: white; color: #667eea; padding: 12px 30px; border-radius: 6px; text-decoration: none; font-weight: 600;">Get Professional Service</a>
                     </div>
 
-                    <h2>Conclusion</h2>
+                    <h2 style="color: #667eea; margin: 40px 0 20px 0;">Conclusion</h2>
                     <p>Regular boiler maintenance is an investment in your home's comfort, safety, and efficiency. By scheduling annual professional services and performing simple monthly checks, you can ensure your boiler operates reliably for years to come. Don't wait for problems to arise – proactive maintenance is always more cost-effective than emergency repairs.</p>
-                </div>
-
-                <div class="blog-post-footer">
-                    <div class="blog-post-tags">
-                        <span class="tag">Boiler Maintenance</span>
-                        <span class="tag">Home Safety</span>
-                        <span class="tag">Heating Systems</span>
-                        <span class="tag">Property Care</span>
-                    </div>
-                    
-                    <div class="blog-post-share">
-                        <h4>Share this article:</h4>
-                        <div class="share-buttons">
-                            <a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="share-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </article>
 
-        <section class="related-posts">
+        <!-- Related Articles -->
+        <section style="background: #f8f9fa; padding: 60px 0;">
             <div class="container">
-                <h2>Related Articles</h2>
-                <div class="related-posts-grid">
-                    <article class="related-post">
-                        <img src="../images/winter.png" alt="Winter Home Maintenance">
-                        <h3><a href="winter-home-maintenance-tips.html">Essential Winter Home Maintenance Tips</a></h3>
+                <h2 style="text-align: center; margin-bottom: 40px;">Related Articles</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                    <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <h3><a href="winter-home-maintenance-tips.html" style="color: #667eea; text-decoration: none;">Essential Winter Home Maintenance Tips</a></h3>
                         <p>Prepare your home for winter with our comprehensive maintenance checklist.</p>
-                    </article>
-                    <article class="related-post">
-                        <img src="../images/kitchenblog.png" alt="Kitchen Paint Guide">
-                        <h3><a href="kitchen-paint-guide.html">The Complete Guide to Kitchen Paint</a></h3>
-                        <p>Transform your kitchen with the right paint choices and professional techniques.</p>
-                    </article>
-                    <article class="related-post">
-                        <img src="../images/tile.png" alt="Bathroom Tiling">
-                        <h3><a href="bathroom-tiling-guide.html">The Complete Guide to Bathroom Tiling</a></h3>
-                        <p>Master the art of bathroom tiling with our step-by-step professional guide.</p>
-                    </article>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <h3><a href="../property-maintenance.html" style="color: #667eea; text-decoration: none;">Property Maintenance Services</a></h3>
+                        <p>Discover our comprehensive property maintenance solutions for London homes.</p>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <h3><a href="../blog.html" style="color: #667eea; text-decoration: none;">More Home Tips</a></h3>
+                        <p>Browse our complete collection of home improvement and maintenance guides.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -228,20 +237,23 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>ENM'S SERVICES</h3>
-                    <p>Professional home improvement and security solutions you can trust.</p>
+                    <p>Your trusted partner for quality home improvements and security solutions.</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Services</h4>
+                    <h3>Services</h3>
                     <ul>
-                        <li><a href="../index.html#services">Property Maintenance</a></li>
-                        <li><a href="../index.html#services">Security Solutions</a></li>
-                        <li><a href="../index.html#services">Home Improvements</a></li>
+                        <li><a href="../property-maintenance.html">Property Maintenance</a></li>
+                        <li><a href="../security.html">Security Services</a></li>
+                        <li><a href="../blog.html">Blog & Tips</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>Email: info@enmsservices.co.uk</p>
-                    <p>Phone: +44 (0) 123 456 7890</p>
+                    <h3>Get In Touch</h3>
+                    <ul>
+                        <li><i class="fab fa-whatsapp"></i> WhatsApp: +44 7356 238036</li>
+                        <li><i class="fas fa-envelope"></i> Email: Admin@enmsservices.co.uk</li>
+                        <li><i class="fas fa-map-marker-alt"></i> London & Surrounding Areas</li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
