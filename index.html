@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon | ENM'S SERVICES</title>
-    <meta name="description" content="ENM'S SERVICES - Something amazing is coming soon. Stay tuned!">
+    <title>Coming Soon | ENM'S SERVICES - AI Solutions & Software Development</title>
+    <meta name="description" content="ENM'S SERVICES - Innovative AI solutions and software development company. Coming soon with cutting-edge technology solutions.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -16,18 +15,40 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #0f3460 75%, #533483 100%);
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             overflow: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
         }
 
         .coming-soon-container {
             text-align: center;
             animation: fadeInUp 1s ease-out;
+            position: relative;
+            z-index: 1;
         }
 
         .logo {
@@ -64,74 +85,23 @@
             font-weight: 300;
             margin-bottom: 40px;
             opacity: 0.9;
+            background: linear-gradient(45deg, #00d4ff, #ff00d4, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .email-form {
-            display: flex;
-            max-width: 400px;
+        .tech-preview {
+            max-width: 600px;
             margin: 0 auto;
-            gap: 10px;
         }
 
-        .email-input {
-            flex: 1;
-            padding: 15px 20px;
-            border: none;
-            border-radius: 50px;
-            font-size: 16px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .email-input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .notify-btn {
-            padding: 15px 30px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .notify-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .social-links {
-            margin-top: 60px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .social-link {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .social-link:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
+        .tech-description {
+            font-size: 1.1rem;
+            font-weight: 400;
+            opacity: 0.8;
+            line-height: 1.6;
+            text-align: center;
         }
 
         @keyframes fadeInUp {
@@ -153,53 +123,21 @@
             .subtitle {
                 font-size: 1.2rem;
             }
-            
-            .email-form {
-                flex-direction: column;
-                max-width: 300px;
-            }
         }
     </style>
 </head>
 <body>
     <div class="coming-soon-container">
         <div class="logo">
-            <div class="logo-text">ENM</div>
+            <div class="logo-text">ENM<span style="font-size: 0.7em; opacity: 0.8;">S</span></div>
         </div>
         
         <h1>Coming Soon</h1>
-        <p class="subtitle">Something amazing is on the way</p>
+        <p class="subtitle">Innovative AI Solutions & Software Development</p>
         
-        <form class="email-form" id="notifyForm">
-            <input type="email" class="email-input" placeholder="Enter your email address" required>
-            <button type="submit" class="notify-btn">Notify Me</button>
-        </form>
-        
-        <div class="social-links">
-            <a href="#" class="social-link" title="Facebook">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" class="social-link" title="Twitter">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#" class="social-link" title="Instagram">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="#" class="social-link" title="LinkedIn">
-                <i class="fab fa-linkedin-in"></i>
-            </a>
+        <div class="tech-preview">
+            <p class="tech-description">Building the future with intelligent software solutions, AI automation, and cutting-edge technology.</p>
         </div>
     </div>
-
-    <script>
-        document.getElementById('notifyForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('.email-input').value;
-            if (email) {
-                alert('Thank you! We\'ll notify you when we launch.');
-                this.querySelector('.email-input').value = '';
-            }
-        });
-    </script>
 </body>
 </html> 
